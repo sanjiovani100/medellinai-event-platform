@@ -7,6 +7,7 @@ This document tracks all git restore points created for the Medellin AI Platform
 1. [Initial Setup (2025-02-25)](#initial-setup-2025-02-25)
 2. [Project Snapshot (2025-02-25)](#project-snapshot-2025-02-25)
 3. [Medellin AI Development (2025-02-25)](#medellin-ai-development-2025-02-25)
+4. [Vercel Integration (2025-03-01)](#vercel-integration-2025-03-01)
 
 ## Initial Setup (2025-02-25)
 
@@ -85,6 +86,45 @@ git checkout restore/medellin-ai/2025-02-25
 
 # Create a new branch from this restore point
 git checkout -b new-branch-name restore/medellin-ai/2025-02-25
+```
+
+## Vercel Integration (2025-03-01)
+
+**Tag:** `restore/vercel-integration/2025-03-01`
+
+**Description:** Integration of Vercel MCP server and Supabase components
+
+**Details:**
+
+- Added Supabase integration files and documentation
+- Updated UI components in template-solar
+- Installed and configured Vercel MCP server for deployment management
+- Updated MCP settings to include Vercel integration
+
+**Commit Message:**
+
+```
+feat(vercel-integration): create restore point with Vercel and Supabase integration
+
+[RESTORE POINT]
+- Status: stable
+- Dependencies: Next.js, React, Vercel, Supabase
+- Breaking Changes: no
+- Migration: none required
+
+This restore point captures the integration of Vercel deployment capabilities and Supabase backend services into the Medellin AI Platform.
+```
+
+**Created:** March 1, 2025, 6:14:40 PM
+
+**How to Use This Restore Point:**
+
+```bash
+# View the code at this restore point
+git checkout restore/vercel-integration/2025-03-01
+
+# Create a new branch from this restore point
+git checkout -b new-branch-name restore/vercel-integration/2025-03-01
 ```
 
 ## Using Restore Points

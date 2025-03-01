@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial project documentation structure in docs/ directory
 - Template solar components and Next.js application structure
 - Project planning documents and requirements specifications
@@ -20,8 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Verified core dependencies are installed (tailwind-variants v0.3.1, clsx v2.1.1, tailwind-merge v2.6.0)
 - Created initial restore point tag (restore/initial-setup/2025-02-25)
 - Created project snapshot restore point tag (restore/project-snapshot/2025-02-25)
+- Added Supabase integration files and documentation
+- Installed and configured Vercel MCP server for deployment management
+- Created Vercel integration restore point tag (restore/vercel-integration/2025-03-01)
 
 ### Changed
+
+- Updated UI components in template-solar
+- Updated MCP settings to include Vercel integration
 
 ### Deprecated
 
