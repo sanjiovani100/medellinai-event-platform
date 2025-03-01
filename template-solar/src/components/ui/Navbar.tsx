@@ -3,11 +3,11 @@
 import { siteConfig } from "@/app/siteConfig"
 import useScroll from "@/lib/useScroll"
 import { cx } from "@/lib/utils"
-import { RiCloseFill, RiMenuFill, RiUserLine } from "@remixicon/react"
+import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
-import { Logo } from "../Logo"
 import { Button } from "../Button"
+import { Logo } from "../Logo"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
@@ -16,50 +16,60 @@ export function NavBar() {
   return (
     <header
       className={cx(
-        "fixed inset-x-4 top-4 z-50 mx-auto flex max-w-6xl justify-center rounded-lg border border-transparent px-3 py-3 transition duration-300",
-        scrolled || open
-          ? "border-gray-200/50 bg-white/80 shadow-2xl shadow-black/5 backdrop-blur-sm"
-          : "bg-white/0",
+        "fixed inset-x-4 top-4 z-50 mx-auto flex max-w-6xl justify-center rounded-lg border border-gray-200/50 bg-white px-3 py-3 transition duration-300",
+        scrolled || open ? "shadow-2xl shadow-black/5" : "",
       )}
     >
       <div className="w-full md:my-auto">
         <div className="relative flex items-center justify-between">
           <Link href={siteConfig.baseLinks.home} aria-label="Home">
             <span className="sr-only">Medellin AI Logo</span>
-            <Logo className="w-22" />
+            <Logo />
           </Link>
           <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
             <div className="flex items-center gap-6 font-medium">
-              <Link className="px-2 py-1 text-gray-900 hover:text-orange-500 transition-colors" href={siteConfig.baseLinks.home}>
+              <Link
+                className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500"
+                href={siteConfig.baseLinks.home}
+              >
                 Home
               </Link>
-              <Link className="px-2 py-1 text-gray-900 hover:text-orange-500 transition-colors" href={siteConfig.baseLinks.events}>
+              <Link
+                className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500"
+                href={siteConfig.baseLinks.events}
+              >
                 Events
               </Link>
-              <Link className="px-2 py-1 text-gray-900 hover:text-orange-500 transition-colors" href={siteConfig.baseLinks.resources}>
+              <Link
+                className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500"
+                href={siteConfig.baseLinks.resources}
+              >
                 Resources
               </Link>
-              <Link className="px-2 py-1 text-gray-900 hover:text-orange-500 transition-colors" href={siteConfig.baseLinks.community}>
+              <Link
+                className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500"
+                href={siteConfig.baseLinks.community}
+              >
                 Community
               </Link>
-              <Link className="px-2 py-1 text-gray-900 hover:text-orange-500 transition-colors" href={siteConfig.baseLinks.about}>
+              <Link
+                className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500"
+                href={siteConfig.baseLinks.about}
+              >
                 About
               </Link>
             </div>
           </nav>
-          <div className="hidden sm:flex items-center gap-2">
+          <div className="hidden items-center gap-2 sm:flex">
             <Link href={siteConfig.auth.signIn}>
-              <Button
-                variant="ghost"
-                className="h-10 font-medium"
-              >
+              <Button variant="ghost" className="h-10 font-medium">
                 Sign In
               </Button>
             </Link>
             <Link href={siteConfig.auth.register}>
               <Button
                 variant="primary"
-                className="h-10 font-medium bg-orange-500 hover:bg-orange-600 text-white"
+                className="h-10 bg-orange-500 font-medium text-white hover:bg-orange-600"
               >
                 Register
               </Button>
@@ -114,7 +124,10 @@ export function NavBar() {
               </Button>
             </Link>
             <Link href={siteConfig.auth.register}>
-              <Button variant="primary" className="w-full justify-center text-lg bg-orange-500 hover:bg-orange-600 text-white">
+              <Button
+                variant="primary"
+                className="w-full justify-center bg-orange-500 text-lg text-white hover:bg-orange-600"
+              >
                 Register
               </Button>
             </Link>
