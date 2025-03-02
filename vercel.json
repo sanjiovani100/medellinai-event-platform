@@ -1,3 +1,6 @@
 {
-  "rootDirectory": "template-solar"
+  "outputDirectory": "template-solar/.next",
+  "buildCommand": "cd template-solar && npm install && npm run build",
+  "installCommand": "cd template-solar && npm install",
+  "framework": "nextjs"
 }
