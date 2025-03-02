@@ -1,8 +1,8 @@
-# Vercel Deployment Troubleshooting Guide
+# Vercel Deployment: Simple Fix for 404 Error
 
-## Problem: 404 NOT_FOUND Error
+## Problem
 
-When accessing the deployed site at https://medellinai-event-platform.vercel.app/, we encounter the following error:
+When accessing https://medellinai-event-platform.vercel.app/, we encounter:
 
 ```
 404: NOT_FOUND
@@ -10,173 +10,76 @@ Code: NOT_FOUND
 ID: iad1::kvms6-1740872936452-869129e40d2b
 ```
 
-This error indicates that Vercel cannot find the appropriate files to serve for the application.
+## Simple Step-by-Step Fix
 
-## Root Causes & Solutions
+### 1. Configure Root Directory in Vercel
 
-### 1. Project Configuration Issues
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Select the `medellinai-event-platform` project
+3. Click on "Settings" tab
+4. Scroll down to "Build & Development Settings"
+5. Set "Root Directory" to `template-solar`
+6. Click "Save" to preserve your changes
 
-#### Symptoms:
+### 2. Add Environment Variables
 
-- 404 error on all routes
-- No specific build errors in logs
-- Deployment shows as "completed" but site is not accessible
+1. Go to "Settings" tab
+2. Click on "Environment Variables" in the left sidebar
+3. You'll see a form with fields for:
 
-#### Solutions:
+   - Key (e.g. CLIENT_KEY)
+   - Value
+   - And a dropdown for environments
 
-1. **Verify Framework Detection**:
+4. **To add the first variable:**
 
-   - Ensure Vercel correctly identifies the project as a Next.js application
-   - Check Project Settings → Framework Preset is set to "Next.js"
+   - In the "key" field, enter: `NEXT_PUBLIC_SUPABASE_URL`
+   - In the "value" field, enter: `https://xivrhixmippoxuqelxlf.supabase.co`
+   - Leave "Environments" as default (All Environments)
+   - Click the "Add" button (appears after typing in both fields)
 
-2. **Check Build Settings**:
+5. **To add the second variable:**
 
-   - Verify Build Command: `npm run build`
-   - Verify Output Directory: `.next`
-   - Add an explicit `vercel.json` configuration:
-     ```json
-     {
-       "version": 2,
-       "buildCommand": "npm run build",
-       "installCommand": "npm install",
-       "framework": "nextjs",
-       "outputDirectory": ".next"
-     }
-     ```
+   - In the "key" field, enter: `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - In the "value" field, enter: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpdnJoaXhtaXBwb3h1cWVseGxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1MDcyNzksImV4cCI6MjA1NjA4MzI3OX0.9myJwLp1kVNuHAYeTCGXXfoDZKZuq1uDyb9iR_jI9g8`
+   - Leave "Environments" as default (All Environments)
+   - Click the "Add" button
 
-3. **Ensure Proper Entry Files**:
-   - For App Router: Verify `app/page.tsx` exists
-   - For Pages Router: Verify `pages/index.js` exists
-   - Add fallback static HTML in `public/index.html`
+6. Also check the "Automatically expose System Environment Variables" option at the bottom of the page
 
-### 2. Deployment Process Issues
+### 3. Force New Deployment
 
-#### Symptoms:
+1. Go to "Deployments" tab
+2. Find the latest deployment
+3. Click the three dots (⋮) menu
+4. Select "Redeploy"
+5. Check "Clear cache and redeploy" option
+6. Click "Redeploy"
 
-- Successful build but 404 on access
-- Deployment logs show no errors
+### 4. Check Root Directory Configuration
 
-#### Solutions:
+After redeploying, if you still see 404 errors:
 
-1. **Force Clear Cache and Redeploy**:
+1. Go back to Settings → General
+2. Ensure that Root Directory is set to `template-solar`
+3. If you've made changes, save and redeploy again
 
-   - In Vercel Dashboard → Deployments → Latest Deployment → ⋮ → Redeploy
-   - Enable "Clear Cache and Deploy" option
+### 5. If Issues Persist
 
-2. **Check Branch Deployment Settings**:
+If the 404 error persists after making these changes:
 
-   - Verify the correct branch is being deployed
-   - Ensure production branch is set correctly (usually `main` or `master`)
+1. Check deployment logs for any specific errors
+2. Verify that the repository structure has not changed
+3. Try creating a new project in Vercel by importing the repository again
+4. Select the `template-solar` directory during import
+5. Configure the same environment variables
 
-3. **Verify Environment Variables**:
-   - Check if required environment variables are set in Vercel
-   - Add environment variables through Project Settings → Environment Variables
+## Important Files
 
-### 3. Domain Configuration Issues
+To ensure Vercel deploys correctly, check that these files exist in your repository:
 
-#### Symptoms:
+1. `/template-solar/next.config.js` (not .ts)
+2. `/template-solar/vercel.json`
+3. `/vercel.json` (at repository root)
 
-- 404 error specifically on custom domain
-- Different behavior between \*.vercel.app and custom domain
-
-#### Solutions:
-
-1. **Check Domain Settings**:
-
-   - Verify domain is properly configured in Vercel
-   - Ensure DNS records are correctly set up
-   - Check for "Domain Not Found" status in Domains section
-
-2. **Verify SSL/TLS Configuration**:
-   - Ensure SSL is properly configured
-   - Check for certificate errors
-
-### 4. Package Manager Compatibility
-
-#### Symptoms:
-
-- Build succeeds locally but fails on Vercel
-- Dependency-related errors in build logs
-
-#### Solutions:
-
-1. **Use Compatible Package Manager**:
-
-   - If using pnpm, ensure Vercel supports it or switch to npm
-   - Add `.npmrc` file with appropriate settings:
-     ```
-     legacy-peer-deps=true
-     engine-strict=false
-     ```
-
-2. **Lock File Consistency**:
-   - Ensure package-lock.json or yarn.lock is committed to repository
-   - Delete node_modules locally and reinstall before pushing
-
-### 5. Region-Specific Issues
-
-#### Symptoms:
-
-- 404 errors from specific regions
-- Error ID contains region identifier (e.g., "iad1")
-
-#### Solutions:
-
-1. **Specify Deployment Regions**:
-
-   - Add regions configuration to vercel.json:
-     ```json
-     {
-       "regions": ["iad1", "sfo1", "bru1"]
-     }
-     ```
-
-2. **Check Region Availability**:
-   - Verify the specified region is available for your account tier
-
-## Immediate Action Plan
-
-1. **Verify Project Structure**:
-
-   - Ensure both App Router (`app/page.tsx`) and Pages Router (`pages/index.js`) entry points exist
-   - Add fallback static HTML file in public directory
-
-2. **Update Configuration**:
-
-   - Add comprehensive vercel.json with explicit settings
-   - Configure package manager compatibility settings
-
-3. **Force Redeploy**:
-
-   - Trigger a new deployment with cache cleared
-   - Monitor build logs for any errors
-
-4. **Check Vercel Dashboard**:
-
-   - Verify project settings match repository structure
-   - Ensure all required environment variables are set
-
-5. **Contact Vercel Support**:
-   - If issues persist, provide the error ID (iad1::kvms6-1740872936452-869129e40d2b)
-   - Share repository access with Vercel support if needed
-
-## Long-term Recommendations
-
-1. **Simplify Project Structure**:
-
-   - Choose either App Router or Pages Router, not both
-   - Follow Vercel's recommended project structure
-
-2. **Implement Monitoring**:
-
-   - Add status monitoring for early detection of deployment issues
-   - Set up alerts for deployment failures
-
-3. **Document Deployment Process**:
-
-   - Create a deployment checklist for team members
-   - Document environment variable requirements
-
-4. **Implement CI/CD Pipeline**:
-   - Add pre-deployment tests to catch issues before they reach Vercel
-   - Use GitHub Actions to validate builds before deployment
+These configuration files tell Vercel how to build and deploy your project correctly.
