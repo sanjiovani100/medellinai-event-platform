@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     domains: ["images.unsplash.com"],
   },
   // Add these for better Vercel compatibility
-  swcMinify: true,
   reactStrictMode: true,
   // Ensure output is optimized for Vercel
   output: "standalone",
