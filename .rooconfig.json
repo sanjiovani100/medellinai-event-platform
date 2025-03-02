@@ -1,0 +1,9 @@
+{
+  "shell": "powershell",
+  "commandSeparator": ";",
+  "commands": {
+    "install": "cd {directory}; npm install",
+    "dev": "cd {directory}; npm run dev",
+    "build": "cd {directory}; npm run build"
+  }
+}

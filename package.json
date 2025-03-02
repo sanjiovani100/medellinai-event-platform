@@ -1,0 +1,16 @@
+{
+  "name": "medellinai-event-platform",
+  "version": "1.0.0",
+  "description": "Medellin AI Event Platform",
+  "scripts": {
+    "install": "cd template-solar; npm install",
+    "dev": "cd template-solar; npm run dev",
+    "build": "cd template-solar; npm run build",
+    "start": "cd template-solar; npm start",
+    "lint": "cd template-solar; npm run lint"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": true
+}

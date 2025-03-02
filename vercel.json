@@ -1,7 +1,6 @@
 {
-  "framework": "nextjs",
-  "buildCommand": "cd template-solar && npm install && npm run build",
+  "buildCommand": "npm run build",
+  "installCommand": "npm run install",
   "outputDirectory": "template-solar/.next",
-  "installCommand": "cd template-solar && npm install",
   "regions": ["iad1"]
 }
