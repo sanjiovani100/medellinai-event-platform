@@ -1,12 +1,14 @@
 {
   "framework": "nextjs",
-  "buildCommand": "node deploy.js",
+  "buildCommand": "bash vercel-build.sh",
   "outputDirectory": "template-solar/.next",
   "installCommand": "cd template-solar && npm install",
   "regions": ["iad1"],
   "env": {
     "NEXT_TELEMETRY_DISABLED": "1",
     "NEXT_DISABLE_ESLINT_DURING_BUILD": "1",
-    "SKIP_ESLINT_CHECK": "true"
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "NEXT_DISABLE_ESLINT": "1",
+    "NODE_ENV": "production"
   }
 }
