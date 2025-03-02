@@ -2,18 +2,14 @@ import {
   RiCarFill,
   RiCheckLine,
   RiCircleLine,
-  RiCodepenLine,
-  RiContrast2Line,
-  RiFullscreenFill,
   RiLoaderFill,
-  RiNotification2Line,
   RiPlaneFill,
   RiTruckFill,
 } from "@remixicon/react"
 import { SolarMark } from "../../../public/SolarMark"
 import { Icons } from "../Icons"
 import { Orbit } from "../Orbit"
-import ChipViz from "./ChipViz"
+// ChipViz is available for use in future updates
 
 export default function Features() {
   return (

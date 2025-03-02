@@ -116,7 +116,7 @@ const Footer = () => {
 
           <div className="mt-4 ml-2 text-sm text-gray-600">
             <p className="mb-3">
-              Empowering Medellín's AI community through knowledge sharing,
+              Empowering Medellín&apos;s AI community through knowledge sharing,
               networking, and innovative events.
             </p>
             <p className="mb-2">

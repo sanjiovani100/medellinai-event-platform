@@ -3,7 +3,7 @@
 import { motion } from "motion/react"
 import { SolarMark } from "../../../public/SolarMark"
 
-const ChipViz = () => {
+export const ChipViz = () => {
   const createVariants = ({
     scale,
     delay,

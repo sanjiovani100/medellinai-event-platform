@@ -1,11 +1,4 @@
-import { Icons } from "@/components/Icons"
-import {
-  RiHome9Fill,
-  RiPlaneLine,
-  RiSignalTowerFill,
-  RiTruckFill,
-} from "@remixicon/react"
-import { SVGMap } from "./SVGMap"
+// Map component
 
 export const Map = () => {
   return (
@@ -86,7 +79,7 @@ export const Map = () => {
       </div>
 
       <div className="pt-12 text-base font-semibold tracking-tight text-orange-400 sm:pt-20 sm:text-lg">
-        Join Medellín's AI Revolution!
+        Join Medellín&apos;s AI Revolution!
       </div>
       <h2
         id="revolution-title"
@@ -98,25 +91,34 @@ export const Map = () => {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="rounded-lg p-4 text-center md:text-left">
             <p className="text-gray-300 sm:text-lg">
-              Exclusive events including meetups, workshops, and hackathons where you can engage with the AI community.
+              Exclusive events including meetups, workshops, and hackathons
+              where you can engage with the AI community.
             </p>
           </div>
           <div className="rounded-lg p-4 text-center md:text-left">
             <p className="text-gray-300 sm:text-lg">
-              Network and collaborate with AI professionals, startups, and researchers to expand your connections.
+              Network and collaborate with AI professionals, startups, and
+              researchers to expand your connections.
             </p>
           </div>
           <div className="rounded-lg p-4 text-center md:text-left">
             <p className="text-gray-300 sm:text-lg">
-              Access premium resources with insights, tools, and training to accelerate your AI journey.
+              Access premium resources with insights, tools, and training to
+              accelerate your AI journey.
             </p>
           </div>
         </div>
         <div className="mt-8 mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="#" className="rounded-full bg-orange-500 px-6 py-2 font-medium text-white transition-colors hover:bg-orange-600">
+          <a
+            href="#"
+            className="rounded-full bg-orange-500 px-6 py-2 font-medium text-white transition-colors hover:bg-orange-600"
+          >
             Join Now
           </a>
-          <a href="#" className="rounded-full bg-gray-800 px-6 py-2 font-medium text-white transition-colors hover:bg-gray-700">
+          <a
+            href="#"
+            className="rounded-full bg-gray-800 px-6 py-2 font-medium text-white transition-colors hover:bg-gray-700"
+          >
             Explore Events
           </a>
         </div>
