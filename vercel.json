@@ -1,5 +1,3 @@
 {
-  "buildCommand": "cd template-solar; npm install; npm run build",
-  "outputDirectory": "template-solar/.next",
-  "regions": ["iad1"]
+  "rootDirectory": "template-solar"
 }
