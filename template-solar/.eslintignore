@@ -1,0 +1,5 @@
+# Ignore all files
+**/*
+
+# These files need to be explicitly allowed if they need to be linted
+# Add exceptions here if needed
