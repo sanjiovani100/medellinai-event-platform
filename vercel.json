@@ -1,12 +1,12 @@
 {
   "framework": "nextjs",
-  "buildCommand": "cd template-solar && npm install && npm run build --no-lint",
+  "buildCommand": "node deploy.js",
   "outputDirectory": "template-solar/.next",
   "installCommand": "cd template-solar && npm install",
   "regions": ["iad1"],
-  "ignoreCommand": "cd template-solar && echo 'Skipping ESLint checks...'",
   "env": {
     "NEXT_TELEMETRY_DISABLED": "1",
-    "NEXT_DISABLE_ESLINT_DURING_BUILD": "1"
+    "NEXT_DISABLE_ESLINT_DURING_BUILD": "1",
+    "SKIP_ESLINT_CHECK": "true"
   }
 }

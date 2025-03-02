@@ -10,13 +10,12 @@ import { supabase } from "../../../lib/supabase"
 export async function GET() {
   try {
     // First, test if we can connect to Supabase at all
-    const { data: versionData, error: versionError } =
-      await supabase.rpc("version")
+    const { error: versionError } = await supabase.rpc("version")
 
     // If we can't even connect, return an error
     if (versionError && versionError.message.includes("not found")) {
       // Try a different approach - just check if we can connect
-      const { data: healthData, error: healthError } = await supabase
+      const { error: healthError } = await supabase
         .from("_health")
         .select("*")
         .limit(1)
@@ -92,7 +91,7 @@ export async function GET() {
           note: "Database connection successful and tables found.",
         },
       })
-    } catch (err) {
+    } catch (_) {
       // If we can't list tables, return a partial success
       return NextResponse.json({
         status: "partial",
